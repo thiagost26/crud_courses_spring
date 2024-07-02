@@ -18,7 +18,6 @@ public class CrudSpringApplication {
 		SpringApplication.run(CrudSpringApplication.class, args);
 	}
 
-
 	@Bean
 	@Profile("dev")
 	CommandLineRunner initDatabase(CourseRepository courseRepository) {
@@ -26,27 +25,28 @@ public class CrudSpringApplication {
 			courseRepository.deleteAll();
 
 			for (int i = 1; i <= 20; i++) {
-				
-				
-			Course c = new Course();
-			c.setName("Angular com Spring"+" "+i);
-			c.setCategory(Category.FRONT_END);
 
-			Lesson lesson = new Lesson();
-			lesson.setName("Introdução");
-			lesson.setYoutubeUrl("01234567891");
-			lesson.setCourse(c);
-			c.getLessons().add(lesson);
+				// testando a branch nova
 
-			Lesson lesson2 = new Lesson();
-			lesson2.setName("Angular inter");
-			lesson2.setYoutubeUrl("01234567892");
-			lesson2.setCourse(c);
-			c.getLessons().add(lesson2);
-			
-			courseRepository.save(c);	
+				Course c = new Course();
+				c.setName("Angular com Spring" + " " + i);
+				c.setCategory(Category.FRONT_END);
+
+				Lesson lesson = new Lesson();
+				lesson.setName("Introdução");
+				lesson.setYoutubeUrl("01234567891");
+				lesson.setCourse(c);
+				c.getLessons().add(lesson);
+
+				Lesson lesson2 = new Lesson();
+				lesson2.setName("Angular inter");
+				lesson2.setYoutubeUrl("01234567892");
+				lesson2.setCourse(c);
+				c.getLessons().add(lesson2);
+
+				courseRepository.save(c);
 			}
-		
+
 		};
 	}
 
